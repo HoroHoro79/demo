@@ -90,7 +90,7 @@
             background-color: #dc3545;
             color: white;
             position: absolute;
-            right: 35px; /* Posición inicial equilibrada */
+            right: 35px;
             transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
     </style>
@@ -98,8 +98,8 @@
 <body>
 
     <div class="contenedor">
-        <h1 id="pregunta">¿Vendrías a ver Toy Story 5 conmigo? 🧸🚀</h1>
-        <div class="botones">
+        <h1 id="pregunta">¿Vendrías a ver Toy Story 5 conmigo? 🤠🚀</h1>
+        <div class="botones" id="contenedor-botones">
             <button id="btn-si" onclick="aceptarCita()">¡SÍ!</button>
             <button id="btn-no" onmouseover="moverBoton(this)" ontouchstart="moverBoton(this)" onclick="moverBoton(this)">No</button>
         </div>
@@ -107,7 +107,6 @@
 
     <script>
         function moverBoton(boton) {
-            // Límites estrictos para iOS y Android para evitar que se esconda tras el teclado o notch
             const padding = 30;
             const anchoBoton = boton.offsetWidth || 90;
             const altoBoton = boton.offsetHeight || 45;
@@ -115,7 +114,6 @@
             const maxW = window.innerWidth - anchoBoton - padding;
             const maxH = window.innerHeight - altoBoton - padding;
             
-            // Forzar posiciones completamente aleatorias por toda la pantalla del móvil
             const randomX = Math.max(padding, Math.floor(Math.random() * maxW));
             const randomY = Math.max(padding, Math.floor(Math.random() * maxH));
             
@@ -125,11 +123,11 @@
         }
 
         function aceptarCita() {
-            document.getElementById("pregunta").innerHTML = "¡Al infinito y más allá! 🚀 Prepárate, que tenemos planazo. 🥰🍿";
-            document.getElementById("btn-no").style.display = "none";
-            document.getElementById("btn-si").style.transform = "scale(1.3)";
-            document.getElementById("btn-si").style.position = "static";
-            document.getElementById("btn-si").onclick = null;
+            // Muestra el mensaje final integrando el ¡Vaaaamos! limpio y sin botones
+            document.getElementById("pregunta").innerHTML = "¡Al infinito y más allá! 🚀<br><br><span style='color: #28a745; font-size: 32px; display: block;'>¡Vaaaamos! 🥰🍿</span>";
+            
+            // Oculta por completo la fila de botones
+            document.getElementById("contenedor-botones").style.display = "none";
         }
     </script>
 
